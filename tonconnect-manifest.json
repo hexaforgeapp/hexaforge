@@ -1,5 +1,7 @@
 {
   "url": "https://hexaforge.com",
   "name": "Hexa Forge",
-  "iconUrl": "https://i.postimg.cc/XJPmyy91/file-000000008fa071fdb953b396d83c81ec.png"
+  "iconUrl": "https://i.postimg.cc/XJPmyy91/file-000000008fa071fdb953b396d83c81ec.png",
+  "termsOfUseUrl": "https://hexaforge.com/terms",
+  "privacyPolicyUrl": "https://hexaforge.com/privacy"
 }
