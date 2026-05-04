@@ -733,7 +733,7 @@ tonConnectUI.onStatusChange(wallet => {
 });
 
 let adManager = null;
-if (window.Adsgram) { adManager = window.Adsgram.init({ blockId: "int-28300" }); }
+if (window.Adsgram) { adManager = window.Adsgram.init({ blockId: "int-29424" }); }
 
 function safeRemove(k){try{localStorage.removeItem(k);}catch(e){}}
 
@@ -1156,7 +1156,7 @@ if(adBtn) {
         checkDailyReset();
 
         try {
-            if (!adManager && window.Adsgram) { adManager = window.Adsgram.init({ blockId: "int-28300" }); }
+            if (!adManager && window.Adsgram) { adManager = window.Adsgram.init({ blockId: "int-29424" }); }
             if (adManager) { 
                 adManager.show().then((result) => { giveAdReward(t); }).catch((error) => { console.error("Adsgram error", error); resetAdBtnState(t); }); 
             } 
