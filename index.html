@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
-<title id="pageTitle">Hexa Forge</title>
+<title>Hexa Forge</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
@@ -17,11 +17,9 @@ if (window.Telegram && window.Telegram.WebApp) {
         if (window.Telegram.WebApp.requestFullscreen) {
             window.Telegram.WebApp.requestFullscreen();
         }
+        window.Telegram.WebApp.setHeaderColor('#080F1D');
+        window.Telegram.WebApp.setBackgroundColor('#080F1D');
     } catch(e) {}
-    try {
-        if(window.Telegram.WebApp.setHeaderColor) window.Telegram.WebApp.setHeaderColor('#080F1D');
-        if(window.Telegram.WebApp.setBackgroundColor) window.Telegram.WebApp.setBackgroundColor('#080F1D');
-    } catch(e){}
 }
 </script>
 
@@ -29,7 +27,7 @@ if (window.Telegram && window.Telegram.WebApp) {
 <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 
 <style>
-/* --- HEXA FORGE DEEP DARK TEMA (Standart) --- */
+/* --- HEXA FORGE DEEP DARK THEME --- */
 :root {
   --bg-start: #080F1D;
   --bg-end: #04080F;   
@@ -64,18 +62,9 @@ body{
 
 .container{max-width:480px;margin:auto;padding:40px 20px 20px; position: relative;} 
 
-/* SƏHİFƏ KEÇİDLƏRİ */
 .page { display: none; opacity: 0; }
-.page.active { 
-    display: block; 
-    opacity: 1; 
-    animation: smoothFadeIn .2s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
-}
-
-@keyframes smoothFadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.page.active { display: block; opacity: 1; animation: smoothFadeIn .2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes smoothFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* KART DİZAYNLARI */
 .balance-card, .ad-card, .profile-card, .vip-card{
@@ -90,53 +79,52 @@ body{
 .balance-card .amount{font-size:42px;font-weight:900;color:var(--text-dark); letter-spacing: -0.5px;}
 .balance-card .currency{font-size:24px;font-weight:800;color:var(--accent); letter-spacing: 0.5px;}
 
-/* Wallet Action Tabs */
 .wallet-actions { display: flex; gap: 10px; margin-bottom: 25px; background: var(--input-bg); padding: 6px; border-radius: 20px; border: 1.5px solid var(--card-border); }
 .wallet-action-btn { flex: 1; padding: 14px 0; font-size: 15px; font-weight: 800; color: var(--text-muted); background: transparent; border: none; border-radius: 16px; cursor: pointer; transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
-.wallet-action-btn.active { background: var(--card-bg); color: var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.wallet-action-btn.active { background: var(--card-bg); color: var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 .wallet-action-btn:active:not(.active) { transform: scale(0.96); }
 
 .method-list{display:flex;justify-content:center;margin:20px 0;}
-.method{width: 100%; max-width: 250px; padding:25px 20px;border-radius:24px;background:var(--card-bg); color:var(--text-dark);text-align:center;font-weight:800;cursor:pointer;display:flex;flex-direction: column;align-items: center;justify-content: center;position: relative;overflow: hidden;box-shadow:0 8px 25px rgba(0,0,0,0.03); border: 1.5px solid var(--card-border); transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s;}
+.method{width: 100%; max-width: 250px; padding:25px 20px;border-radius:24px;background:var(--card-bg); color:var(--text-dark);text-align:center;font-weight:800;cursor:pointer;display:flex;flex-direction: column;align-items: center;justify-content: center;position: relative;overflow: hidden;box-shadow:0 8px 25px rgba(0,0,0,0.2); border: 1.5px solid var(--card-border); transition: transform 0.15s;}
 .method:active {transform: scale(0.95);}
-.method-logo{width: 60px; height: 60px; margin-bottom: 15px;border-radius: 50%; object-fit: cover; background-color: #111827; pointer-events: none; -webkit-user-drag: none; filter: drop-shadow(0 4px 10px rgba(56, 189, 248, 0.2));}
+.method-logo{width: 60px; height: 60px; margin-bottom: 15px;border-radius: 50%; object-fit: cover; background-color: #fff; border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.3); pointer-events: none; -webkit-user-drag: none;}
 .method-text { font-size: 17px; letter-spacing: 0.2px;}
 .min-withdraw-label {position: absolute;top: 12px;right: 12px;font-size: 11px;font-weight: 800;color: var(--accent);background: var(--progress-bg);padding: 5px 10px;border-radius: 10px;}
 
-/* PREMIUM MINING KART DİZAYNI */
+/* HEXAGON MINING DİZAYNI */
 .ad-card.mining-premium { background: radial-gradient(circle at top right, var(--card-bg), var(--input-bg)); border: 1.5px solid var(--card-border); position: relative; overflow: hidden; }
 .mining-premium::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 60%); pointer-events: none; }
 .mining-circle-wrap { position: relative; width: 180px; height: 180px; margin: 0 auto 25px; display: flex; justify-content: center; align-items: center; z-index: 2;}
-.mining-progress-ring { transform: rotate(-90deg); width: 180px; height: 180px; filter: drop-shadow(0 4px 10px rgba(56, 189, 248, 0.2)); }
-.mining-progress-ring circle { fill: transparent; stroke-width: 12; stroke-linecap: round; }
+.mining-progress-ring { width: 180px; height: 180px; filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.3)); transform: rotate(-90deg); }
+.mining-progress-ring polygon { fill: transparent; stroke-width: 8; stroke-linejoin: round; }
 .ring-bg { stroke: var(--progress-bg); }
-.ring-fill { stroke: var(--accent); stroke-dasharray: 502; stroke-dashoffset: 502; transition: stroke-dashoffset 1s linear; }
+.ring-fill { stroke: var(--accent); stroke-dasharray: 485; stroke-dashoffset: 485; transition: stroke-dashoffset 1s linear; }
 .mining-status-content { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; }
-.mining-status-content img { width: 45px; height: 45px; margin-bottom: 8px; transition: 0.3s; pointer-events: none; -webkit-user-drag: none;}
+.mining-status-content img { width: 45px; height: 45px; margin-bottom: 5px; transition: 0.3s; border-radius: 5px; pointer-events: none; -webkit-touch-callout: none; }
 .mining-timer { font-size: 26px; font-weight: 900; color: var(--text-dark); font-variant-numeric: tabular-nums; letter-spacing: 1px;}
-.mining-amount { font-size: 14px; font-weight: 800; color: var(--accent); margin-top: 4px; background: var(--card-bg); padding: 4px 12px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); border: 1px solid var(--card-border);}
+.mining-amount { font-size: 14px; font-weight: 800; color: var(--accent); margin-top: 4px; background: rgba(17, 24, 39, 0.8); padding: 4px 12px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 1px solid var(--card-border);}
 .mining-stats { display: flex; gap: 15px; margin-bottom: 25px; z-index: 2; position: relative;}
-.mining-stat-box { flex: 1; background: var(--card-bg); border-radius: 20px; padding: 15px 12px; border: 1.5px solid var(--card-border); display: flex; flex-direction: column; gap: 6px;}
+.mining-stat-box { flex: 1; background: var(--card-bg); border-radius: 20px; padding: 15px 12px; border: 1.5px solid var(--card-border); display: flex; flex-direction: column; gap: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);}
 .mining-stat-box span { font-size: 12px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 .mining-stat-box strong { font-size: 17px; font-weight: 900; color: var(--text-dark); }
 .mining-active-anim { animation: pulseIconGlow 2s infinite alternate ease-in-out; }
-@keyframes pulseIconGlow { 0% { filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.3)); transform: scale(1); } 100% { filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.8)); transform: scale(1.1); } }
+@keyframes pulseIconGlow { 0% { filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.4)); transform: scale(1); } 100% { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.9)); transform: scale(1.1); } }
 
 /* MINING ACTIONS */
 .mining-controls { display: flex; gap: 12px; width: 100%; position: relative; z-index: 2;}
-.boost-btn { padding: 0 20px; font-size: 16px; font-weight: 800; border: none; border-radius: 20px; color: white; background: linear-gradient(135deg, #F59E0B, #D97706); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1); min-width: 90px;}
-.boost-btn:active { transform: scale(0.92); }
+.boost-btn { padding: 0 20px; font-size: 16px; font-weight: 800; border: none; border-radius: 20px; color: white; background: linear-gradient(135deg, #F59E0B, #D97706); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s; min-width: 90px;}
+.boost-btn:active { transform: scale(0.92); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2); }
 .boost-btn span { font-size: 13px; margin-top: 2px;}
 
 /* GÖREVLƏR */
 .task-list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
-.task-item { background: var(--card-bg); border: 1.5px solid var(--card-border); border-radius: 24px; padding: 25px 20px; position: relative; text-align: left; }
+.task-item { background: var(--card-bg); border: 1.5px solid var(--card-border); border-radius: 24px; padding: 25px 20px; position: relative; text-align: left; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: background-color 0.4s, border-color 0.4s;}
 .task-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .task-title { font-size: 17px; font-weight: 800; display: flex; align-items: center; gap: 12px; color: var(--text-dark); }
 .task-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 14px; color: white; background: linear-gradient(135deg, var(--btn-gradient-start), var(--btn-gradient-end)); box-shadow: 0 4px 15px var(--btn-shadow);}
 .task-reward-badge { background: var(--progress-bg); color: var(--accent); padding: 6px 14px; border-radius: 12px; font-weight: 800; font-size: 14px; border: 1px solid var(--card-border);}
 .task-desc { font-size: 14px; color: var(--text-muted); font-weight: 600; margin-bottom: 20px; line-height: 1.5; }
-.task-btn { width: 100%; padding: 16px; font-size: 16px; font-weight: 800; border: none; border-radius: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.15s;}
+.task-btn { width: 100%; padding: 16px; font-size: 16px; font-weight: 800; border: none; border-radius: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s;}
 .task-btn:active:not(:disabled) {transform: scale(0.96);}
 .task-btn.action { background: linear-gradient(135deg, var(--btn-gradient-start), var(--btn-gradient-end)); color: white; box-shadow: 0 8px 20px var(--btn-shadow); }
 .task-btn.completed { background: var(--input-bg); color: var(--accent); cursor: not-allowed; box-shadow: none; border: 1px solid var(--card-border); }
@@ -151,7 +139,7 @@ body{
 .vip-features { list-style: none; padding: 0; margin-bottom: 25px; }
 .vip-features li { font-size: 15px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
 .vip-features li i { color: #22C55E; width: 20px; height: 20px; }
-.vip-btn { width: 100%; padding: 18px; font-size: 16px; font-weight: 800; border: none; border-radius: 20px; cursor: pointer; color: white; background: linear-gradient(135deg, #F59E0B, #D97706); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3); transition: transform 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px;}
+.vip-btn { width: 100%; padding: 18px; font-size: 16px; font-weight: 800; border: none; border-radius: 20px; cursor: pointer; color: white; background: linear-gradient(135deg, #F59E0B, #D97706); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3); transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px;}
 .vip-btn:active:not(:disabled) { transform: scale(0.96); box-shadow: none;}
 .vip-btn.active-vip { background: var(--input-bg); color: #22C55E; cursor: not-allowed; box-shadow: none; border: 1.5px solid #22C55E; }
 #marketAlert { margin-bottom: 20px; display: none; }
@@ -164,7 +152,7 @@ body{
 .progress{height:12px;background:var(--input-bg);border-radius:12px;overflow:hidden;margin-top:10px; margin-bottom:10px; border: 1.5px solid var(--card-border);}
 .progress-fill{height:100%;background:linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));width:0%;transition:width .8s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 12px;} 
 
-.ad-btn{flex: 1; padding:18px;font-size:16px;font-weight:800;border:none;border-radius:20px;color:var(--text-light);cursor:pointer;background:linear-gradient(135deg,var(--btn-gradient-start),var(--btn-gradient-end));box-shadow:0 8px 25px var(--btn-shadow);position: relative; overflow: hidden; display:flex; align-items:center; justify-content:center; transition: transform 0.15s;}
+.ad-btn{flex: 1; padding:18px;font-size:16px;font-weight:800;border:none;border-radius:20px;color:var(--text-light);cursor:pointer;background:linear-gradient(135deg,var(--btn-gradient-start),var(--btn-gradient-end));box-shadow:0 8px 25px var(--btn-shadow);position: relative; overflow: hidden; display:flex; align-items:center; justify-content:center; transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s, background 0.3s;}
 .ad-btn:active:not(:disabled) {transform: scale(0.96);}
 .ad-btn.waiting { background: var(--input-bg) !important; color: var(--accent) !important; cursor: not-allowed; box-shadow: none !important; border: 1.5px solid var(--card-border) !important; }
 .ad-btn-content { position: relative; z-index: 2; display: flex; align-items:center; gap: 10px;}
@@ -174,35 +162,36 @@ body{
 .reward-msg {position: absolute;top: -15px; left: 50%;transform: translateX(-50%) translateY(-100%); background: #FFFFFF; color: #0F172A;padding: 12px 24px;border-radius: 100px;box-shadow: 0 10px 25px rgba(255,255,255,0.1);font-weight: 800;font-size: 14px;opacity: 0;z-index: 100; white-space: nowrap;transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(255,255,255,0.1);}
 .reward-msg.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* FLOATING MENU */
+/* --- MENU --- */
 .menu { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 420px; display: flex; justify-content: space-between; background: var(--menu-bg); padding: 10px 12px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 999; border: 1.5px solid var(--card-border); }
 .menu button { flex: 1; margin: 0 2px; padding: 0; border: none; background: transparent; color: var(--text-muted); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 54px; position: relative; border-radius: 20px; transition: transform 0.1s ease; }
 .menu button:active:not(.active) { transform: scale(0.92); }
 .menu button::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--progress-bg); border-radius: 18px; opacity: 0; transform: scale(0.8); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); z-index: -1; }
 .menu button.active::before { opacity: 1; transform: scale(1); }
-.menu button .nav-icon { width: 24px; height: 24px; margin-bottom: 2px; transition: all 0.25s; stroke-width: 2px; }
-.menu button .nav-text { font-size: 11px; font-weight: 600; transition: all 0.25s; }
+.menu button .nav-icon { width: 24px; height: 24px; margin-bottom: 2px; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); stroke-width: 2px; }
+.menu button .nav-text { font-size: 11px; font-weight: 600; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
 .menu button.active { color: var(--accent); pointer-events: none; }
 .menu button.active .nav-icon { stroke-width: 2.5px; transform: translateY(-2px); filter: drop-shadow(0 2px 5px rgba(56, 189, 248, 0.3)); }
 .menu button.active .nav-text { transform: translateY(1px); font-weight: 800; }
 
-/* PROFIL SƏHİFƏSİ - YENİ DİZAYN */
-.profile-header-new { display: flex; align-items: center; justify-content: flex-start; gap: 20px; padding: 15px 5px; margin-bottom: 25px;}
-.profile-logo-sm { width: 60px; height: 60px; border-radius: 50%; pointer-events: none; -webkit-touch-callout: none; user-select: none; filter: drop-shadow(0 4px 15px rgba(56, 189, 248, 0.4)); background: #111827; }
-.profile-info { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
-.profile-name { font-size: 22px; font-weight: 900; color: var(--text-dark); }
-.profile-id { font-size: 14px; font-weight: 700; color: var(--accent); background: var(--progress-bg); padding: 4px 12px; border-radius: 100px; border: 1px solid var(--card-border);}
+/* --- PROFIL SƏHİFƏSİ (YENİLƏNMİŞ DİZAYN) --- */
+.profile-header { display: flex; align-items: center; justify-content: flex-start; gap: 18px; margin-bottom: 30px; background: var(--input-bg); padding: 15px; border-radius: 20px; border: 1.5px solid var(--card-border);}
+.profile-avatar { width: 60px; height: 60px; background: var(--card-bg); border-radius: 15px; display: flex; align-items: center; justify-content: center; position: relative; border: 2px solid var(--accent); pointer-events: none; -webkit-touch-callout: none; user-select: none;}
+.profile-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.profile-info { text-align: left; }
+.profile-name { font-size: 18px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; }
+.profile-id { font-size: 13px; font-weight: 800; color: var(--accent); }
 
 .settings-list { text-align: left; background: var(--input-bg); border-radius: 24px; padding: 10px 20px; margin-bottom: 25px; border: 1.5px solid var(--card-border); }
 .setting-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1.5px solid var(--card-border); }
 .setting-item:last-child { border-bottom: none; }
 .setting-info { display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 15px; color: var(--text-dark); }
-.setting-icon { display: flex; align-items: center; justify-content: center; background: var(--card-bg); width: 38px; height: 38px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); border: 1px solid var(--card-border);}
+.setting-icon { display: flex; align-items: center; justify-content: center; background: var(--card-bg); width: 38px; height: 38px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: 1px solid var(--card-border);}
 .setting-icon i { width: 18px; height: 18px; color: var(--accent); }
 
 .lang-select { background: var(--card-bg); border: 1.5px solid var(--card-border); color: var(--text-dark); font-weight: 700; padding: 8px 14px; border-radius: 12px; outline: none; cursor: pointer; font-family: 'Inter', sans-serif; appearance: none; -webkit-appearance: none; padding-right: 25px; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F8FAFC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 8px center; background-size: 14px;}
 
-.profile-btn { width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-weight: 800; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; border: none; transition: transform 0.15s;}
+.profile-btn { width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-weight: 800; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; border: none; transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s;}
 .profile-btn:active {transform: scale(0.96);}
 .profile-btn i { width: 20px; height: 20px; }
 .btn-share { background: linear-gradient(135deg, var(--btn-gradient-start), var(--btn-gradient-end)); color: white; box-shadow: 0 8px 25px var(--btn-shadow); }
@@ -212,17 +201,17 @@ body{
 .input-field:focus { border-color: var(--accent); background: var(--card-bg); box-shadow: 0 0 0 4px var(--progress-bg);}
 .input-field::placeholder { color: var(--text-muted); opacity: 0.8; font-weight: 500;}
 
-.submit-btn {width:100%;padding:18px;margin-top:20px;border:none;border-radius:20px;background:linear-gradient(135deg,var(--btn-gradient-start),var(--btn-gradient-end));color:var(--text-light);font-weight:800;font-size: 16px;cursor:pointer; box-shadow: 0 8px 25px var(--btn-shadow); display:flex; align-items:center; justify-content:center; gap:10px; transition: transform 0.15s;}
+.submit-btn {width:100%;padding:18px;margin-top:20px;border:none;border-radius:20px;background:linear-gradient(135deg,var(--btn-gradient-start),var(--btn-gradient-end));color:var(--text-light);font-weight:800;font-size: 16px;cursor:pointer; box-shadow: 0 8px 25px var(--btn-shadow); display:flex; align-items:center; justify-content:center; gap:10px; transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);}
 .submit-btn:active {transform: scale(0.96);}
 
 .fee-calc-box { font-size: 13px; font-weight: 600; color: var(--text-muted); margin: 5px 0 15px; text-align: left; padding: 16px; background: var(--input-bg); border-radius: 16px; border: 1.5px solid var(--card-border); display: none;}
 .fee-calc-box span { color: var(--text-dark); font-weight: 800; }
 
 .alert{margin-top:15px;padding:16px;border-radius:16px;display:none; font-weight: 700; text-align: center; font-size: 14px; animation: fadeIn 0.3s ease;}
-.alert.error{background: rgba(239, 68, 68, 0.1); color:#EF4444; border: 1.5px solid rgba(239, 68, 68, 0.3);}
-.alert.success{background: rgba(34, 197, 94, 0.1); color:#22C55E; border: 1.5px solid rgba(34, 197, 94, 0.3);}
+.alert.error{ background: rgba(239, 68, 68, 0.1); border: 1.5px solid rgba(239, 68, 68, 0.3); color:#EF4444; }
+.alert.success{ background: rgba(34, 197, 94, 0.1); border: 1.5px solid rgba(34, 197, 94, 0.3); color:#22C55E; }
 
-.history-card { background: var(--card-bg); border-radius: 28px; padding: 30px 20px; margin-top: 30px; border: 1.5px solid var(--card-border); text-align: left;}
+.history-card { background: var(--card-bg); border-radius: 28px; padding: 30px 20px; margin-top: 30px; border: 1.5px solid var(--card-border); text-align: left; box-shadow: 0 8px 30px rgba(0,0,0,0.3);}
 .history-title { font-size: 18px; font-weight: 800; color: var(--text-dark); margin-bottom: 20px; text-align: center; }
 .history-list { display: flex; flex-direction: column; gap: 12px; }
 .history-item { background: var(--input-bg); padding: 16px; border-radius: 18px; border: 1.5px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; }
@@ -237,34 +226,34 @@ body{
 .history-status.completed { background: rgba(34, 197, 94, 0.1); color: #22C55E; border-color: rgba(34, 197, 94, 0.2); }
 .history-empty { text-align: center; font-size: 14px; color: var(--text-muted); padding: 30px 20px; font-weight: 600; background: var(--input-bg); border-radius: 18px; border: 1px dashed var(--card-border);}
 
-/* YENİ HEXA FORGE YÜKLƏMƏ EKRANI */
+/* --- YENİ LOADING EKRANI --- */
 #loadingScreen { position: fixed; top: 0; left: 0; width: 100%; height: var(--tg-viewport-stable-height, 100vh); background: var(--bg-start); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease-out; user-select: none; overflow: hidden; }
 .loader-content { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; }
-.loader-logo { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 25px; animation: pulseLogo 2s infinite alternate cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; -webkit-touch-callout: none; filter: drop-shadow(0 10px 30px rgba(56, 189, 248, 0.3)); background: #111827;}
-@keyframes pulseLogo { 0% { transform: scale(1) translateY(0); filter: drop-shadow(0 10px 30px rgba(56, 189, 248, 0.3)); } 100% { transform: scale(1.05) translateY(-5px); filter: drop-shadow(0 20px 40px rgba(56, 189, 248, 0.7)); } }
-.loader-title { font-size: 28px; font-weight: 900; color: var(--text-dark); margin-bottom: 30px; letter-spacing: 3px; text-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);}
+.loader-logo { width: 90px; height: 90px; border-radius: 15px; margin-bottom: 25px; animation: pulseLogo 2s infinite alternate cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3); border: 2px solid var(--accent); }
+@keyframes pulseLogo { 0% { transform: scale(1) translateY(0); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3); } 100% { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 40px rgba(56, 189, 248, 0.6); } }
+.loader-title { font-size: 28px; font-weight: 900; color: var(--text-dark); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; }
 .modern-spinner { width: 44px; height: 44px; border: 4px solid rgba(56, 189, 248, 0.1); border-top: 4px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* Yağan Tonlar */
-.falling-coin { position: absolute; top: -50px; width: 25px; height: 25px; background-image: url('https://ton.org/download/ton_symbol.png'); background-size: cover; border-radius: 50%; pointer-events: none; animation: fall linear forwards; z-index: 1; opacity: 0.5; filter: drop-shadow(0 2px 5px rgba(56,189,248,0.4));}
-@keyframes fall { 0% { transform: translateY(-50px) rotate(0deg); } 100% { transform: translateY(120vh) rotate(360deg); } }
+.falling-coin { position: absolute; top: -50px; pointer-events: none; animation: fall linear forwards; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); z-index: 1; border-radius: 8px;}
+@keyframes fall { 0% { transform: translateY(-50px) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(120vh) rotate(360deg); opacity: 0; } }
 
-#taskNotification {position: fixed;top: 40px;left: 50%;transform: translate(-50%, -150%); background: #FFFFFF; color: #0F172A; box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15); padding: 16px 24px;border-radius: 100px; font-weight: 700;font-size: 14px;opacity: 0;z-index: 10000;transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 10px; white-space: nowrap;}
+#taskNotification {position: fixed;top: 40px;left: 50%;transform: translate(-50%, -150%); background: #FFFFFF; color: #0F172A; box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15); padding: 16px 24px;border-radius: 100px;font-weight: 700;font-size: 14px;opacity: 0;z-index: 10000;transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 10px; white-space: nowrap; will-change: transform, opacity;}
 .notification-show {opacity: 1 !important;transform: translate(-50%, 0) !important; }
 .notification-hide {opacity: 0;transform: translate(-50%, -150%); }
 
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 9999; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 9999; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; will-change: opacity; }
 .modal-overlay.show { display: flex; opacity: 1; }
-.share-modal { background: var(--card-bg); width: 90%; max-width: 360px; border-radius: 32px; padding: 35px 25px; box-shadow: 0 25px 50px rgba(0,0,0,0.4); border: 1.5px solid var(--card-border); transform: scale(0.95) translateY(20px); transition: transform 0.3s; text-align: center; }
+.share-modal { background: var(--card-bg); width: 90%; max-width: 360px; border-radius: 32px; padding: 35px 25px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 1.5px solid var(--card-border); transform: scale(0.95) translateY(20px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; text-align: center; }
 .modal-overlay.show .share-modal { transform: scale(1) translateY(0); }
 .share-modal-title { font-size: 20px; font-weight: 800; color: var(--text-dark); margin-bottom: 25px; }
-.share-btn-action { width: 100%; padding: 16px; border-radius: 20px; border: none; font-weight: 700; font-size: 15px; margin-bottom: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; color: #fff; transition: transform 0.15s;}
+.share-btn-action { width: 100%; padding: 16px; border-radius: 20px; border: none; font-weight: 700; font-size: 15px; margin-bottom: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; color: #fff; transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);}
 .share-btn-action:active {transform: scale(0.96);}
-.share-btn-action.tg { background: linear-gradient(135deg, #2AABEE, #229ED9); }
-.share-btn-action.wa { background: linear-gradient(135deg, #25D366, #128C7E); }
-.share-btn-action.copy { background: var(--input-bg); color: var(--text-dark); border: 1.5px solid var(--card-border); }
-.share-btn-action.close-modal { background: transparent; color: var(--text-muted); margin-bottom: 0; margin-top: 10px; font-weight: 700;}
+.share-btn-action.tg { background: linear-gradient(135deg, #2AABEE, #229ED9); box-shadow: 0 8px 20px rgba(34, 158, 217, 0.25); }
+.share-btn-action.wa { background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25); }
+.share-btn-action.copy { background: var(--input-bg); color: var(--text-dark); border: 1.5px solid var(--card-border); box-shadow: none; }
+.share-btn-action.close-modal { background: transparent; color: var(--text-muted); box-shadow: none; margin-bottom: 0; margin-top: 10px; font-weight: 700;}
+.share-btn-action.close-modal:hover { color: var(--text-dark); }
 </style>
 </head>
 <body id="body" class="dark-theme">
@@ -295,47 +284,29 @@ if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData
 
 const UNIQUE_PAY_ID_KEY = `pay_uid_${userRefId}`;
 let payUid = localStorage.getItem(UNIQUE_PAY_ID_KEY);
-if (!payUid) {
-    payUid = 'UID-' + Math.floor(1000 + Math.random() * 9000); 
-    localStorage.setItem(UNIQUE_PAY_ID_KEY, payUid);
-}
+if (!payUid) { payUid = 'UID-' + Math.floor(1000 + Math.random() * 9000); localStorage.setItem(UNIQUE_PAY_ID_KEY, payUid); }
 
 const LANG_KEY = 'lang_' + userRefId;
-
-let usePerformanceTime = false;
-let baseServerTime = 0;
-let basePerformanceTime = 0;
+let usePerformanceTime = false; let baseServerTime = 0; let basePerformanceTime = 0;
 
 async function syncServerTime() {
     try {
         const res = await fetch('https://worldtimeapi.org/api/timezone/Europe/Moscow', { cache: 'no-store' });
         if (res.ok) {
             const data = await res.json();
-            baseServerTime = new Date(data.datetime).getTime();
-            basePerformanceTime = performance.now();
-            usePerformanceTime = true;
-            return;
+            baseServerTime = new Date(data.datetime).getTime(); basePerformanceTime = performance.now(); usePerformanceTime = true; return;
         }
     } catch(e) {}
-    
     try {
         const res2 = await fetch('https://timeapi.io/api/Time/current/zone?timeZone=Europe/Moscow', { cache: 'no-store' });
         if (res2.ok) {
             const data2 = await res2.json();
-            baseServerTime = new Date(data2.dateTime).getTime();
-            basePerformanceTime = performance.now();
-            usePerformanceTime = true;
-            return;
+            baseServerTime = new Date(data2.dateTime).getTime(); basePerformanceTime = performance.now(); usePerformanceTime = true; return;
         }
     } catch(e2) {}
 }
 
-function getTrueTime() {
-    if (usePerformanceTime) {
-        return baseServerTime + (performance.now() - basePerformanceTime);
-    }
-    return Date.now(); 
-}
+function getTrueTime() { return usePerformanceTime ? baseServerTime + (performance.now() - basePerformanceTime) : Date.now(); }
 </script>
 
 <div id="loadingScreen" oncontextmenu="return false;">
@@ -366,12 +337,12 @@ function getTrueTime() {
         <h2 data-translate-key="miningTitle" style="margin-bottom: 25px; font-weight: 900; font-size: 22px; position:relative; z-index:2;">Hexa Mining</h2>
         
         <div class="mining-circle-wrap">
-            <svg class="mining-progress-ring">
-                <circle class="ring-bg" cx="90" cy="90" r="80"></circle>
-                <circle class="ring-fill" id="miningRing" cx="90" cy="90" r="80"></circle>
+            <svg class="mining-progress-ring" viewBox="0 0 180 180">
+                <polygon class="ring-bg" points="90,10 159.28,50 159.28,130 90,170 20.72,130 20.72,50"></polygon>
+                <polygon class="ring-fill" id="miningRing" points="90,10 159.28,50 159.28,130 90,170 20.72,130 20.72,50"></polygon>
             </svg>
             <div class="mining-status-content">
-                <img src="https://i.postimg.cc/XJPmyy91/file-000000008fa071fdb953b396d83c81ec.png" id="miningIcon" alt="Miner">
+                <img src="https://i.postimg.cc/XJPmyy91/file-000000008fa071fdb953b396d83c81ec.png" id="miningIcon">
                 <div id="miningTimer" class="mining-timer">08:00:00</div>
                 <div id="miningAmountText" class="mining-amount">+0.01 TON</div>
             </div>
@@ -416,7 +387,7 @@ function getTrueTime() {
 
     <div class="vip-card">
         <div class="vip-header">
-            <div class="vip-title"><i data-lucide="cpu"></i> Hexa Node V1</div>
+            <div class="vip-title"><i data-lucide="cpu"></i> Forge Node V1</div>
             <div class="vip-price">15 TON</div>
         </div>
         <ul class="vip-features">
@@ -424,12 +395,12 @@ function getTrueTime() {
             <li><i data-lucide="check-circle"></i> <span data-translate-key="gpuDays1">Active for 21 Days</span></li>
             <li><i data-lucide="check-circle"></i> <span data-translate-key="gpuBenefit">Boosted Mining Speed</span></li>
         </ul>
-        <button id="gpu1Btn" class="vip-btn" onclick="buyGpu(1, 15, 21)"><i data-lucide="shopping-cart"></i> <span data-translate-key="buyGpuBtn">Buy GPU</span></button>
+        <button id="gpu1Btn" class="vip-btn" onclick="buyGpu(1, 15, 21)"><i data-lucide="shopping-cart"></i> <span data-translate-key="buyGpuBtn">Buy Node</span></button>
     </div>
 
     <div class="vip-card">
         <div class="vip-header">
-            <div class="vip-title"><i data-lucide="cpu"></i> Hexa Node V2</div>
+            <div class="vip-title"><i data-lucide="cpu"></i> Forge Node V2</div>
             <div class="vip-price">40 TON</div>
         </div>
         <ul class="vip-features">
@@ -437,12 +408,12 @@ function getTrueTime() {
             <li><i data-lucide="check-circle"></i> <span data-translate-key="gpuDays2">Active for 23 Days</span></li>
             <li><i data-lucide="check-circle"></i> <span data-translate-key="gpuBenefit">Boosted Mining Speed</span></li>
         </ul>
-        <button id="gpu2Btn" class="vip-btn" onclick="buyGpu(2, 40, 23)"><i data-lucide="shopping-cart"></i> <span data-translate-key="buyGpuBtn">Buy GPU</span></button>
+        <button id="gpu2Btn" class="vip-btn" onclick="buyGpu(2, 40, 23)"><i data-lucide="shopping-cart"></i> <span data-translate-key="buyGpuBtn">Buy Node</span></button>
     </div>
 
     <div class="vip-card" style="border-color: #F59E0B; box-shadow: 0 8px 30px rgba(245, 158, 11, 0.1);">
         <div class="vip-header">
-            <div class="vip-title" style="color: #F59E0B;"><i data-lucide="zap"></i> Hexa Forge V3 Pro</div>
+            <div class="vip-title" style="color: #F59E0B;"><i data-lucide="zap"></i> Forge Quantum X</div>
             <div class="vip-price">75 TON</div>
         </div>
         <ul class="vip-features">
@@ -450,12 +421,12 @@ function getTrueTime() {
             <li><i data-lucide="check-circle"></i> <span data-translate-key="gpuDays3">Active for 25 Days</span></li>
             <li><i data-lucide="check-circle"></i> <span data-translate-key="gpuBenefit">Boosted Mining Speed</span></li>
         </ul>
-        <button id="gpu3Btn" class="vip-btn" onclick="buyGpu(3, 75, 25)"><i data-lucide="shopping-cart"></i> <span data-translate-key="buyGpuBtn">Buy GPU</span></button>
+        <button id="gpu3Btn" class="vip-btn" onclick="buyGpu(3, 75, 25)"><i data-lucide="shopping-cart"></i> <span data-translate-key="buyGpuBtn">Buy Node</span></button>
     </div>
 
     <div class="vip-card" style="border-color: #8B5CF6; box-shadow: 0 8px 30px rgba(139, 92, 246, 0.1);">
         <div class="vip-header">
-            <div class="vip-title" style="color: #8B5CF6;"><i data-lucide="flame"></i> Hexa Forge V4 Ultra</div>
+            <div class="vip-title" style="color: #8B5CF6;"><i data-lucide="flame"></i> Hexa Neural Nexus</div>
             <div class="vip-price">200 TON</div>
         </div>
         <ul class="vip-features">
@@ -463,7 +434,7 @@ function getTrueTime() {
             <li><i data-lucide="check-circle"></i> <span data-translate-key="gpuDays4">Active for 30 Days</span></li>
             <li><i data-lucide="check-circle"></i> <span data-translate-key="gpuBenefit">Boosted Mining Speed</span></li>
         </ul>
-        <button id="gpu4Btn" class="vip-btn" onclick="buyGpu(4, 200, 30)" style="background: linear-gradient(135deg, #8B5CF6, #7C3AED); box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);"><i data-lucide="shopping-cart"></i> <span data-translate-key="buyGpuBtn">Buy GPU</span></button>
+        <button id="gpu4Btn" class="vip-btn" onclick="buyGpu(4, 200, 30)" style="background: linear-gradient(135deg, #8B5CF6, #7C3AED); box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);"><i data-lucide="shopping-cart"></i> <span data-translate-key="buyGpuBtn">Buy Node</span></button>
     </div>
   </div>
   
@@ -477,7 +448,6 @@ function getTrueTime() {
     </div>
 
     <div class="task-list">
-        
         <div class="task-item">
             <div id="adRewardNotificationContainer"></div> 
             <div class="task-header">
@@ -556,7 +526,7 @@ function getTrueTime() {
             
             <div class="method-list" id="methods">
               <div class="method" data-type="ton">
-                  <img src="https://i.postimg.cc/XJPmyy91/file-000000008fa071fdb953b396d83c81ec.png" alt="TON" class="method-logo" draggable="false">
+                  <img src="https://i.postimg.cc/CM6QcxtM/IMG-20260413-182028-903.jpg" alt="TON" class="method-logo" draggable="false">
                   <span class="method-text">TON Coin</span>
                   <span class="min-withdraw-label" data-translate-key="minTonLabel">Min: {min} TON</span>
               </div>
@@ -595,11 +565,13 @@ function getTrueTime() {
 
   <div id="profilePage" class="page">
     <div class="profile-card" id="profileMainView">
-        <div class="profile-header-new">
-            <img class="profile-logo-sm" src="https://i.postimg.cc/XJPmyy91/file-000000008fa071fdb953b396d83c81ec.png" alt="Logo">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img id="profileImage" src="https://i.postimg.cc/XJPmyy91/file-000000008fa071fdb953b396d83c81ec.png" alt="Profile">
+            </div>
             <div class="profile-info">
                 <div class="profile-name" id="displayUsername" data-translate-key="guestUser">User</div>
-                <div class="profile-id">ID: <span id="displayUserId"></span></div>
+                <div class="profile-id">UID: <span id="displayUserId"></span></div>
             </div>
         </div>
 
@@ -655,6 +627,7 @@ function getTrueTime() {
 <script>
 lucide.createIcons();
 
+// Bura URL olaraq sizin öz domeninizdə host edəcəyiniz JSON linkini qeyd edin (Hexa Forge)
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
     manifestUrl: 'https://hexaforge.com/tonconnect-manifest.json',
     buttonRootId: 'ton-connect-btn'
@@ -672,17 +645,14 @@ tonConnectUI.onStatusChange(wallet => {
 let adManager = null;
 if (window.Adsgram) { adManager = window.Adsgram.init({ blockId: "int-28300" }); }
 
-function safeRemove(k){try{localStorage.removeItem(k);}catch(e){}}
-
 const USERNAME_KEY = `user_profile_name_${userRefId}`;
-
 if (tgUser) {
     let fullName = tgUser.first_name;
     if (tgUser.last_name) { fullName += " " + tgUser.last_name; }
     localStorage.setItem(USERNAME_KEY, fullName);
 }
 const userRefLink = `https://t.me/hexa_forgebot?startapp=${userRefId}`;
-const customShareText = "🚀 Start Mining with Hexa Forge Simple, Fast & Rewarding!\n\n⛏️ Mine TON coins anytime, anywhere with an easy and smooth experience.\n📺 Watch ads, complete simple tasks, and grow your balance daily.\n\n💎 Real rewards system\n🎯 Daily earning opportunities\n⚡ Fast, beginner-friendly mining process\n🔥 Boost your earnings step by step\n\nWhether you're new to mining or already experienced, Hexa Forge makes earning easier than ever.\n\n👇 Join now and start mining today!\n\n🔗 " + userRefLink;
+const SHARE_TEXT_RAW = "🚀 Start Mining with Hexa Forge Simple, Fast & Rewarding!\n\n⛏️ Mine TON coins anytime, anywhere with an easy and smooth experience.\n📺 Watch ads, complete simple tasks, and grow your balance daily.\n\n💎 Real rewards system\n🎯 Daily earning opportunities\n⚡ Fast, beginner-friendly mining process\n🔥 Boost your earnings step by step\n\nWhether you're new to mining or already experienced, Hexa Forge makes earning easier than ever.\n\n👇 Join now and start mining today!\n\n🔗 {LINK}";
 
 const MAX_ADS_PER_DAY = 50;
 const AD_REWARD = 0.0010; 
@@ -694,7 +664,6 @@ const COUNT_KEY = `cnt_ton_${userRefId}`;
 const TOTAL_ADS_KEY = `total_ads_ton_${userRefId}`;
 const HAS_DEPOSITED_KEY = `has_dep_ton_${userRefId}`;
 const JOIN_COMMUNITY_KEY = `joined_ton_community_${userRefId}`;
-const REWARD_MSG_KEY = `rewardMsgExpire_ton_${userRefId}`;
 const HISTORY_KEY = `withdraw_history_ton_${userRefId}`;
 const MAX_MIN_WITHDRAW_KEY = `max_min_withdraw_ton_${userRefId}`;
 
@@ -706,17 +675,12 @@ let bal = parseFloat(safeGet(BAL_KEY, 0.000));
 let cnt = parseInt(safeGet(COUNT_KEY, 0));
 let totalAdsWatched = parseInt(safeGet(TOTAL_ADS_KEY, 0));
 let hasDeposited = safeGet(HAS_DEPOSITED_KEY, false);
-
 let currentGpuLevel = safeGet(GPU_LEVEL_KEY, 0);
 let gpuExpiry = safeGet(GPU_EXPIRY_KEY, 0);
-
 let withdrawHistory = safeGet(HISTORY_KEY, []);
 
-let currentLang = localStorage.getItem(LANG_KEY);
-if (!currentLang || !['en', 'tr', 'ru'].includes(currentLang)) {
-    currentLang = 'en'; 
-    localStorage.setItem(LANG_KEY, currentLang);
-}
+let currentLang = localStorage.getItem(LANG_KEY) || 'en';
+if (!['en', 'tr', 'ru'].includes(currentLang)) currentLang = 'en';
 document.getElementById('langSelect').value = currentLang;
 
 const TRANSLATIONS = {
@@ -725,64 +689,51 @@ const TRANSLATIONS = {
         dailyAdsHeader: 'Daily Ads', watched: 'Watched', maximum: 'Max', maxCount: '50', progressText: 'Progress:', watchAd: 'Watch Ad', watching: '⏳ Watching...', adLimitReached: '📣 Daily limit reached!', rewardAddedConfirmed: (r) => `✅ ${r} added!`, wait: '⏳ Wait {s}s', joinCommunityTitle: 'Join Community', joinCommunityDesc: 'Join our official community channel and earn!', joinBtnText: 'Join Channel', completed: 'Completed',
         depositTitleTab: 'Deposit', withdrawTitleTab: 'Withdrawal', depositInfo: 'Add TON directly from your connected wallet.', depositActionBtn: 'Deposit TON', placeholderDepositAmount: 'Amount (Min 0.1 TON)', minDepositText: 'Minimum deposit is 0.1 TON', depositSuccess: '✅ Deposit transaction sent! Balance updated.', connectWalletFirst: 'Please connect wallet first.', txFailed: 'Transaction failed or cancelled.',
         withdrawTitle: 'Withdrawal', selectMethod: 'Select withdrawal method', minTonLabel: 'Min: {min} TON', back: 'Back', withdrawTonTitle: 'Withdraw TON', withdraw: 'Withdraw', feeText: 'Network Fee (5%):', receiveText: 'You will receive:', methodError: 'Select a method', detailsError: 'Enter valid TON address', amountError: 'Enter correct amount', minAmount: 'Minimum withdrawal is {min} TON', balanceError: 'Insufficient balance', withdrawSuccess: '✅ Withdrawal requested! It will be processed soon.', withdrawDepositCondition: 'You must watch 1000 ads to withdraw after a deposit! (Watched: {count}/1000)',
-        home: 'Home', tasks: 'Tasks', wallet: 'Wallet', profile: 'Profile', placeholderDetails_ton: 'Your TON Wallet Address', placeholderAmount: 'Amount (Min {min} TON)', taskSuccess: (r) => `✅ Task Completed! ${r} added.`, guestUser: 'User', language: 'Language', withdrawHistory: 'Transaction History', pending: 'Pending', emptyHistory: 'History is empty', shareBtn: 'Invite Friends', shareTitle: 'Invite Friends', shareTelegram: 'Share on Telegram', shareWhatsapp: 'Share on WhatsApp', copyLink: 'Copy Link', linkCopied: '✅ Link copied!', close: 'Close', depositText: 'Deposit',
-        market: 'Market', gpuReward1: 'Daily 1 TON', gpuDays1: 'Active for 21 Days', gpuReward2: 'Daily 2.5 TON', gpuDays2: 'Active for 23 Days', gpuReward3: 'Daily 5 TON', gpuDays3: 'Active for 25 Days', gpuReward4: 'Daily 12 TON', gpuDays4: 'Active for 30 Days', gpuBenefit: 'Boosted Mining Speed', buyGpuBtn: 'Buy GPU', activeGpu: 'Active', gpuActiveError: 'You already have this or a higher GPU level active!', gpuSuccess: '✅ GPU purchased successfully! Your mining is boosted.'
+        home: 'Home', tasks: 'Tasks', wallet: 'Wallet', profile: 'Profile', placeholderDetails_ton: 'Your TON Wallet Address', placeholderAmount: 'Amount (Min {min} TON)', taskSuccess: (r) => `✅ Task Completed! ${r} added.`, guestUser: 'User', language: 'Language', withdrawHistory: 'Transaction History', pending: 'Pending', emptyHistory: 'History is empty', shareBtn: 'Invite Friends', shareTitle: 'Invite Friends', shareTelegram: 'Share on Telegram', shareWhatsapp: 'Share on WhatsApp', copyLink: 'Copy Link', linkCopied: '✅ Link copied!', close: 'Close',
+        shareMsg: SHARE_TEXT_RAW, depositText: 'Deposit',
+        market: 'Market', gpuReward1: 'Daily 1 TON', gpuDays1: 'Active for 21 Days', gpuReward2: 'Daily 2.5 TON', gpuDays2: 'Active for 23 Days', gpuReward3: 'Daily 5 TON', gpuDays3: 'Active for 25 Days', gpuReward4: 'Daily 12 TON', gpuDays4: 'Active for 30 Days', gpuBenefit: 'Boosted Mining Speed', buyGpuBtn: 'Buy Node', activeGpu: 'Active', lockedGpu: 'Locked', gpuActiveError: 'You cannot downgrade an active Node!', gpuSuccess: '✅ Node purchased successfully! Your mining is boosted.'
     },
     'tr': {
         yourBalance: 'Bakiyeniz', miningTitle: 'Hexa Kazım', dailyProfit: 'Günlük', cycleReward: 'Her 8 Saatte', startMining: 'Kazıma Başla', miningInProgress: 'Kazılıyor...', claimMining: 'TON Topla', boostMining: 'Hızlandır',
         dailyAdsHeader: 'Günlük Reklamlar', watched: 'İzlenen', maximum: 'Maks', maxCount: '50', progressText: 'İlerleme:', watchAd: 'Reklam İzle', watching: '⏳ İzleniyor...', adLimitReached: '📣 Günlük sınıra ulaştınız!', rewardAddedConfirmed: (r) => `✅ ${r} eklendi!`, wait: '⏳ {s}sn bekleyin', joinCommunityTitle: 'Topluluğa Katıl', joinCommunityDesc: 'Resmi topluluk kanalımıza katılın ve kazanın!', joinBtnText: 'Kanala Katıl', completed: 'Tamamlandı',
         depositTitleTab: 'Yatırım', withdrawTitleTab: 'Çekim', depositInfo: 'Bağlı cüzdanınızdan doğrudan TON ekleyin.', depositActionBtn: 'TON Yatır', placeholderDepositAmount: 'Miktar (Min 0.1 TON)', minDepositText: 'Minimum yatırım 0.1 TON', depositSuccess: '✅ Yatırım gönderildi! Bakiye güncellendi.', connectWalletFirst: 'Lütfen önce cüzdanı bağlayın.', txFailed: 'İşlem başarısız veya iptal edildi.',
         withdrawTitle: 'Para Çekme', selectMethod: 'Çekim yöntemi seçin', minTonLabel: 'Min: {min} TON', back: 'Geri', withdrawTonTitle: 'TON Çek', withdraw: 'Çekim Yap', feeText: 'Ağ Ücreti (5%):', receiveText: 'Alacağınız:', methodError: 'Yöntem seçin', detailsError: 'Geçerli TON adresi girin', amountError: 'Miktarı doğru girin', minAmount: 'Minimum çekim {min} TON', balanceError: 'Yetersiz bakiye', withdrawSuccess: '✅ Çekim talebi alındı! Yakında işlenecektir.', withdrawDepositCondition: 'Yatırım yaptıktan sonra çekim yapmak için 1000 reklam izlemelisiniz! (İzlenen: {count}/1000)',
-        home: 'Ana Sayfa', tasks: 'Görevler', wallet: 'Cüzdan', profile: 'Profil', placeholderDetails_ton: 'TON Cüzdan Adresiniz', placeholderAmount: 'Miktar (Min {min} TON)', taskSuccess: (r) => `✅ Görev Tamamlandı! ${r} eklendi.`, guestUser: 'Kullanıcı', language: 'Dil', withdrawHistory: 'İşlem Geçmişi', pending: 'Beklemede', emptyHistory: 'Geçmiş boş', shareBtn: 'Arkadaşlarını Davet Et', shareTitle: 'Arkadaşlarını Davet Et', shareTelegram: 'Telegram ile paylaş', shareWhatsapp: 'WhatsApp ile paylaş', copyLink: 'Bağlantıyı Kopyala', linkCopied: '✅ Bağlantı kopyalandı!', close: 'Kapat', depositText: 'Yatırım',
-        market: 'Market', gpuReward1: 'Günlük 1 TON', gpuDays1: '21 Gün Aktif', gpuReward2: 'Günlük 2.5 TON', gpuDays2: '23 Gün Aktif', gpuReward3: 'Günlük 5 TON', gpuDays3: '25 Gün Aktif', gpuReward4: 'Günlük 12 TON', gpuDays4: '30 Gün Aktif', gpuBenefit: 'Artırılmış Kazım Hızı', buyGpuBtn: 'Satın Al', activeGpu: 'Aktif', gpuActiveError: 'Sizde zaten bu veya daha yüksek bir GPU seviyesi aktif!', gpuSuccess: '✅ GPU başarıyla alındı! Kazım hızınız artırıldı.'
+        home: 'Ana Sayfa', tasks: 'Görevler', wallet: 'Cüzdan', profile: 'Profil', placeholderDetails_ton: 'TON Cüzdan Adresiniz', placeholderAmount: 'Miktar (Min {min} TON)', taskSuccess: (r) => `✅ Görev Tamamlandı! ${r} eklendi.`, guestUser: 'Kullanıcı', language: 'Dil', withdrawHistory: 'İşlem Geçmişi', pending: 'Beklemede', emptyHistory: 'Geçmiş boş', shareBtn: 'Arkadaşlarını Davet Et', shareTitle: 'Arkadaşlarını Davet Et', shareTelegram: 'Telegram ile paylaş', shareWhatsapp: 'WhatsApp ile paylaş', copyLink: 'Bağlantıyı Kopyala', linkCopied: '✅ Bağlantı kopyalandı!', close: 'Kapat',
+        shareMsg: SHARE_TEXT_RAW, depositText: 'Yatırım',
+        market: 'Market', gpuReward1: 'Günlük 1 TON', gpuDays1: '21 Gün Aktif', gpuReward2: 'Günlük 2.5 TON', gpuDays2: '23 Gün Aktif', gpuReward3: 'Günlük 5 TON', gpuDays3: '25 Gün Aktif', gpuReward4: 'Günlük 12 TON', gpuDays4: '30 Gün Aktif', gpuBenefit: 'Artırılmış Kazım Hızı', buyGpuBtn: 'Node Al', activeGpu: 'Aktif', lockedGpu: 'Kilitli', gpuActiveError: 'Mevcut seviyeden düşük Node alamazsınız!', gpuSuccess: '✅ Node başarıyla alındı! Kazım hızınız artırıldı.'
     },
     'ru': { 
         yourBalance: 'Ваш Баланс', miningTitle: 'Hexa Майнинг', dailyProfit: 'В день', cycleReward: 'За 8 часов', startMining: 'Начать майнинг', miningInProgress: 'Майнинг...', claimMining: 'Собрать TON', boostMining: 'Ускорить',
-        dailyAdsHeader: 'Ежедневная Реклама', watched: 'Просмотрено', maximum: 'Макс', maxCount: '50', progressText: 'Прогресс:', watchAd: 'Смотреть Рекламу', watching: '⏳ Просмотр...', adLimitReached: '📣 Достигнут лимит!', rewardAddedConfirmed: (r) => `✅ ${r} добавлено!`, wait: '⏳ Ожидайте {s}с', joinCommunityTitle: 'Присоединиться', joinCommunityDesc: 'Вступайте в наше официальное сообщество и зарабатывайте!', joinBtnText: 'Подписаться', completed: 'Выполнено',
+        dailyAdsHeader: 'Ежедневная Реклама', watched: 'Просмотрено', maximum: 'Макс', maxCount: '50', progressText: 'Прогресс:', watchAd: 'Смотреть Рекламу', watching: '⏳ Просмотр...', adLimitReached: '📣 Достигнут лимит!', rewardAddedConfirmed: (r) => `✅ ${r} добавлено!`, wait: '⏳ Ожидайте {s}с', joinCommunityTitle: 'Присоединиться к сообществу', joinCommunityDesc: 'Вступайте в наше официальное сообщество и зарабатывайте!', joinBtnText: 'Подписаться', completed: 'Выполнено',
         depositTitleTab: 'Депозит', withdrawTitleTab: 'Вывод', depositInfo: 'Пополняйте баланс напрямую с подключенного кошелька.', depositActionBtn: 'Пополнить TON', placeholderDepositAmount: 'Сумма (Мин 0.1 TON)', minDepositText: 'Минимальный депозит 0.1 TON', depositSuccess: '✅ Транзакция отправлена! Баланс обновлен.', connectWalletFirst: 'Пожалуйста, подключите кошелек.', txFailed: 'Транзакция не удалась или отменена.',
         withdrawTitle: 'Вывод Средств', selectMethod: 'Выберите способ вывода', minTonLabel: 'Мин: {min} TON', back: 'Назад', withdrawTonTitle: 'Вывести TON', withdraw: 'Вывести', feeText: 'Комиссия сети (5%):', receiveText: 'Вы получите:', methodError: 'Выберите способ', detailsError: 'Введите верный TON адрес', amountError: 'Введите правильную сумму', minAmount: 'Минимальный вывод {min} TON', balanceError: 'Недостаточно средств', withdrawSuccess: '✅ Заявка отправлена! Будет обработана скоро.', withdrawDepositCondition: 'Для вывода после депозита нужно посмотреть 1000 реклам! (Просмотрено: {count}/1000)',
-        home: 'Главная', tasks: 'Задания', wallet: 'Кошелек', profile: 'Профиль', placeholderDetails_ton: 'Ваш TON Адрес', placeholderAmount: 'Сумма (Мин {min} TON)', taskSuccess: (r) => `✅ Задание выполнено! ${r} добавлено.`, guestUser: 'Пользователь', language: 'Язык', withdrawHistory: 'История транзакций', pending: 'В ожидании', emptyHistory: 'История пуста', shareBtn: 'Пригласить Друзей', shareTitle: 'Пригласить Друзей', shareTelegram: 'Поделиться в Telegram', shareWhatsapp: 'Поделиться в WhatsApp', copyLink: 'Скопировать', linkCopied: '✅ Ссылка скопирована!', close: 'Закрыть', depositText: 'Депозит',
-        market: 'Маркет', gpuReward1: 'В день 1 TON', gpuDays1: 'Активен 21 день', gpuReward2: 'В день 2.5 TON', gpuDays2: 'Активен 23 дня', gpuReward3: 'В день 5 TON', gpuDays3: 'Активен 25 дней', gpuReward4: 'В день 12 TON', gpuDays4: 'Активен 30 дней', gpuBenefit: 'Ускоренный майнинг', buyGpuBtn: 'Купить', activeGpu: 'Активен', gpuActiveError: 'У вас уже есть этот или более высокий уровень GPU!', gpuSuccess: '✅ GPU успешно куплен! Ваш майнинг ускорен.'
+        home: 'Главная', tasks: 'Задания', wallet: 'Кошелек', profile: 'Профиль', placeholderDetails_ton: 'Ваш TON Адрес', placeholderAmount: 'Сумма (Мин {min} TON)', taskSuccess: (r) => `✅ Задание выполнено! ${r} добавлено.`, guestUser: 'Пользователь', language: 'Язык', withdrawHistory: 'История транзакций', pending: 'В ожидании', emptyHistory: 'История пуста', shareBtn: 'Пригласить Друзей', shareTitle: 'Пригласить Друзей', shareTelegram: 'Поделиться в Telegram', shareWhatsapp: 'Поделиться в WhatsApp', copyLink: 'Скопировать ссылку', linkCopied: '✅ Ссылка скопирована!', close: 'Закрыть',
+        shareMsg: SHARE_TEXT_RAW, depositText: 'Депозит',
+        market: 'Маркет', gpuReward1: 'В день 1 TON', gpuDays1: 'Активен 21 день', gpuReward2: 'В день 2.5 TON', gpuDays2: 'Активен 23 дня', gpuReward3: 'В день 5 TON', gpuDays3: 'Активен 25 дней', gpuReward4: 'В день 12 TON', gpuDays4: 'Активен 30 дней', gpuBenefit: 'Ускоренный майнинг', buyGpuBtn: 'Купить Node', activeGpu: 'Активен', lockedGpu: 'Заблокировано', gpuActiveError: 'Нельзя купить Node уровнем ниже!', gpuSuccess: '✅ Node успешно куплен! Ваш майнинг ускорен.'
     }
 };
 
 let alertTimeouts = {};
 function showAlertAutoHiding(element, message, type) {
-    element.textContent = message;
+    element.innerHTML = message;
     element.className = 'alert ' + type;
     element.style.display = 'block';
-    
     if (alertTimeouts[element.id]) { clearTimeout(alertTimeouts[element.id]); }
-    
-    alertTimeouts[element.id] = setTimeout(() => {
-        element.style.display = 'none';
-        delete alertTimeouts[element.id];
-    }, 4000); 
+    alertTimeouts[element.id] = setTimeout(() => { element.style.display = 'none'; }, 4000); 
 }
 
-let isAdRunning = false; 
-let isCheckingTime = false;
+let isAdRunning = false; let isCheckingTime = false;
 
 async function checkDailyReset() {
     if (isCheckingTime) return;
     isCheckingTime = true;
-    
     const trueDateStr = new Date(getTrueTime()).toISOString().split('T')[0];
-
     const savedDate = safeGet('moscow_reset_date_' + userRefId, null);
-    if (savedDate !== trueDateStr) {
-        cnt = 0; 
-        safeSet('moscow_reset_date_' + userRefId, trueDateStr);
-        safeSet(COUNT_KEY, cnt);
-    }
-
-    isCheckingTime = false;
-    updateUI();
+    if (savedDate !== trueDateStr) { cnt = 0; safeSet('moscow_reset_date_' + userRefId, trueDateStr); safeSet(COUNT_KEY, cnt); }
+    isCheckingTime = false; updateUI();
 }
 
-function getMinWithdrawal() {
-    return maxMinWithdraw;
-}
+function getMinWithdrawal() { return maxMinWithdraw; }
 
 const MINING_START_KEY = `mining_start_${userRefId}`;
 const MINING_END_KEY = `mining_end_${userRefId}`;
@@ -796,135 +747,86 @@ function getDailyMiningReward() {
         if (currentGpuLevel === 3) return 5.0;
         if (currentGpuLevel === 4) return 12.0;
     } else {
-        if (currentGpuLevel !== 0) {
-            currentGpuLevel = 0; gpuExpiry = 0;
-            safeSet(GPU_LEVEL_KEY, 0); safeSet(GPU_EXPIRY_KEY, 0);
-            updateGpuUI();
-        }
+        if (currentGpuLevel !== 0) { currentGpuLevel = 0; gpuExpiry = 0; safeSet(GPU_LEVEL_KEY, 0); safeSet(GPU_EXPIRY_KEY, 0); updateGpuUI(); }
     }
     return 0.03;
 }
-
 function getMiningReward() { return getDailyMiningReward() / 3; }
 
 function updateMiningUI() {
     const now = getTrueTime();
-    const start = safeGet(MINING_START_KEY, 0);
-    const end = safeGet(MINING_END_KEY, 0);
+    const start = safeGet(MINING_START_KEY, 0); const end = safeGet(MINING_END_KEY, 0);
     const t = TRANSLATIONS[currentLang];
-    
-    const btnText = document.getElementById('miningBtnText');
-    const timerEl = document.getElementById('miningTimer');
-    const ring = document.getElementById('miningRing');
-    const icon = document.getElementById('miningIcon');
-    const miningBtn = document.getElementById('miningBtn');
-    const amountTextEl = document.getElementById('miningAmountText');
-
+    const btnText = document.getElementById('miningBtnText'); const timerEl = document.getElementById('miningTimer');
+    const ring = document.getElementById('miningRing'); const icon = document.getElementById('miningIcon');
+    const miningBtn = document.getElementById('miningBtn'); const amountTextEl = document.getElementById('miningAmountText');
     const totalReward = getMiningReward();
     document.getElementById('dailyMiningProfit').textContent = getDailyMiningReward().toFixed(3) + ' TON';
     document.getElementById('cycleMiningReward').textContent = totalReward.toFixed(3) + ' TON';
 
     if (start > 0 && end > 0) {
         if (now >= end) {
-            timerEl.textContent = "00:00:00";
-            btnText.textContent = t.claimMining;
-            ring.style.strokeDashoffset = 0; 
-            icon.classList.remove('mining-active-anim');
-            miningBtn.className = 'ad-btn';
-            miningBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)'; 
+            timerEl.textContent = "00:00:00"; btnText.textContent = t.claimMining;
+            ring.style.strokeDashoffset = 0; icon.classList.remove('mining-active-anim');
+            miningBtn.className = 'ad-btn'; miningBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)'; 
             amountTextEl.textContent = '+' + totalReward.toFixed(6) + ' TON'; 
         } else {
-            const remaining = end - now;
-            const elapsed = now - start;
-            const total = end - start;
-
-            const h = Math.floor(remaining / 3600000);
-            const m = Math.floor((remaining % 3600000) / 60000);
-            const s = Math.floor((remaining % 60000) / 1000);
+            const remaining = end - now; const elapsed = now - start; const total = end - start;
+            const h = Math.floor(remaining / 3600000); const m = Math.floor((remaining % 3600000) / 60000); const s = Math.floor((remaining % 60000) / 1000);
             timerEl.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-
             const percent = Math.min(1, elapsed / total);
-            ring.style.strokeDashoffset = 502 - (502 * percent);
-
-            const currentEarned = totalReward * percent;
-            amountTextEl.textContent = '+' + currentEarned.toFixed(6) + ' TON';
-
-            btnText.textContent = t.miningInProgress;
-            icon.classList.add('mining-active-anim');
-            miningBtn.className = 'ad-btn waiting';
-            miningBtn.style.background = '';
+            ring.style.strokeDashoffset = 485 - (485 * percent);
+            amountTextEl.textContent = '+' + (totalReward * percent).toFixed(6) + ' TON';
+            btnText.textContent = t.miningInProgress; icon.classList.add('mining-active-anim');
+            miningBtn.className = 'ad-btn waiting'; miningBtn.style.background = '';
         }
     } else {
-        timerEl.textContent = "08:00:00";
-        btnText.textContent = t.startMining;
-        ring.style.strokeDashoffset = 502;
-        icon.classList.remove('mining-active-anim');
-        miningBtn.className = 'ad-btn';
-        miningBtn.style.background = '';
+        timerEl.textContent = "08:00:00"; btnText.textContent = t.startMining; ring.style.strokeDashoffset = 485;
+        icon.classList.remove('mining-active-anim'); miningBtn.className = 'ad-btn'; miningBtn.style.background = '';
         amountTextEl.textContent = '+' + totalReward.toFixed(3) + ' TON';
     }
 }
 
 function handleMiningAction() {
-    const now = getTrueTime();
-    const start = safeGet(MINING_START_KEY, 0);
-    const end = safeGet(MINING_END_KEY, 0);
+    const now = getTrueTime(); const start = safeGet(MINING_START_KEY, 0); const end = safeGet(MINING_END_KEY, 0);
     const t = TRANSLATIONS[currentLang];
-
     if (start > 0 && end > 0) {
         if (now >= end) {
-            const reward = getMiningReward();
-            bal += reward;
-            safeSet(BAL_KEY, bal);
-            safeSet(MINING_START_KEY, 0);
-            safeSet(MINING_END_KEY, 0);
+            const reward = getMiningReward(); bal += reward; safeSet(BAL_KEY, bal);
+            safeSet(MINING_START_KEY, 0); safeSet(MINING_END_KEY, 0);
             showTaskNotification(t.rewardAddedConfirmed(`<b>${reward.toFixed(3)} TON</b>`));
-            updateUI();
-            updateMiningUI();
+            updateUI(); updateMiningUI();
         }
-    } else {
-        safeSet(MINING_START_KEY, now);
-        safeSet(MINING_END_KEY, now + CYCLE_MS);
-        updateMiningUI();
-    }
+    } else { safeSet(MINING_START_KEY, now); safeSet(MINING_END_KEY, now + CYCLE_MS); updateMiningUI(); }
 }
 
 function updateDynamicTexts() {
-    const t = TRANSLATIONS[currentLang];
-    const currentMinWithdraw = getMinWithdrawal();
-    document.querySelectorAll('.min-withdraw-label').forEach(el => {
-        el.innerHTML = t.minTonLabel.replace('{min}', currentMinWithdraw);
-    });
+    const t = TRANSLATIONS[currentLang]; const currentMinWithdraw = getMinWithdrawal();
+    document.querySelectorAll('.min-withdraw-label').forEach(el => { el.innerHTML = t.minTonLabel.replace('{min}', currentMinWithdraw); });
     const amountInput = document.getElementById('amount');
     if(amountInput) { amountInput.placeholder = t.placeholderAmount.replace('{min}', currentMinWithdraw); }
 }
 
 function updateGpuUI() {
-    const t = TRANSLATIONS[currentLang];
-    const isActive = getTrueTime() < gpuExpiry;
-    
+    const t = TRANSLATIONS[currentLang]; const isActive = getTrueTime() < gpuExpiry;
     [1, 2, 3, 4].forEach((level) => {
-        const btn = document.getElementById(`gpu${level}Btn`);
-        if (!btn) return;
-        
+        const btn = document.getElementById(`gpu${level}Btn`); if (!btn) return;
         if (isActive && currentGpuLevel === level) {
-            btn.className = 'vip-btn active-vip';
-            btn.innerHTML = `<i data-lucide="check-circle"></i> ${t.activeGpu}`;
-            btn.disabled = true;
+            btn.className = 'vip-btn active-vip'; btn.style.opacity = '1';
+            btn.innerHTML = `<i data-lucide="check-circle"></i> ${t.activeGpu}`; btn.disabled = true;
+        } else if (isActive && currentGpuLevel > level) {
+            btn.className = 'vip-btn active-vip'; btn.style.opacity = '0.4';
+            btn.innerHTML = `<i data-lucide="lock"></i> ${t.lockedGpu}`; btn.disabled = true;
         } else {
-            btn.className = 'vip-btn';
-            btn.innerHTML = `<i data-lucide="shopping-cart"></i> ${t.buyGpuBtn}`;
-            btn.disabled = false;
+            btn.className = 'vip-btn'; btn.style.opacity = '1';
+            btn.innerHTML = `<i data-lucide="shopping-cart"></i> ${t.buyGpuBtn}`; btn.disabled = false;
         }
     });
-    lucide.createIcons();
-    updateDynamicTexts();
-    updateMiningUI();
+    lucide.createIcons(); updateDynamicTexts(); updateMiningUI();
 }
 
 function loadProfile() {
-    const savedName = localStorage.getItem(USERNAME_KEY);
-    const displayEl = document.getElementById('displayUsername');
+    const savedName = localStorage.getItem(USERNAME_KEY); const displayEl = document.getElementById('displayUsername');
     if (savedName) { displayEl.textContent = savedName; displayEl.removeAttribute('data-translate-key'); } 
     else { displayEl.setAttribute('data-translate-key', 'guestUser'); applyTranslationToElement(displayEl, 'guestUser', currentLang); }
     document.getElementById('displayUserId').textContent = userRefId;
@@ -932,13 +834,12 @@ function loadProfile() {
 
 function openShareModal() { const overlay = document.getElementById('shareModalOverlay'); overlay.style.display = 'flex'; setTimeout(() => overlay.classList.add('show'), 10); }
 function closeShareModal() { const overlay = document.getElementById('shareModalOverlay'); overlay.classList.remove('show'); setTimeout(() => overlay.style.display = 'none', 300); }
-
-function shareOnTelegramAction() { window.open(`https://t.me/share/url?url=&text=${encodeURIComponent(customShareText)}`, '_blank'); closeShareModal(); }
-function shareOnWhatsappAction() { window.open(`https://wa.me/?text=${encodeURIComponent(customShareText)}`, '_blank'); closeShareModal(); }
+function shareOnTelegramAction() { window.open(`https://t.me/share/url?url=&text=${encodeURIComponent(TRANSLATIONS[currentLang].shareMsg.replace('{LINK}', userRefLink))}`, '_blank'); closeShareModal(); }
+function shareOnWhatsappAction() { window.open(`https://wa.me/?text=${encodeURIComponent(TRANSLATIONS[currentLang].shareMsg.replace('{LINK}', userRefLink))}`, '_blank'); closeShareModal(); }
 function copyRefLinkAction() {
     if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(customShareText).then(() => { showTaskNotification(TRANSLATIONS[currentLang].linkCopied); }).catch(err => fallbackCopyTextToClipboard(customShareText, TRANSLATIONS[currentLang]));
-    } else { fallbackCopyTextToClipboard(customShareText, TRANSLATIONS[currentLang]); }
+        navigator.clipboard.writeText(userRefLink).then(() => { showTaskNotification(TRANSLATIONS[currentLang].linkCopied); }).catch(err => fallbackCopyTextToClipboard(userRefLink, TRANSLATIONS[currentLang]));
+    } else { fallbackCopyTextToClipboard(userRefLink, TRANSLATIONS[currentLang]); }
     closeShareModal();
 }
 function fallbackCopyTextToClipboard(text, t) {
@@ -953,65 +854,35 @@ function formatTon(val) { return parseFloat(val).toFixed(3); }
 
 function updateUI() {
   const formattedBal = formatTon(bal);
-  document.getElementById('balance').textContent = formattedBal;
-  document.getElementById('balance2').textContent = formattedBal;
-  document.getElementById('balance3').textContent = formattedBal;
-  document.getElementById('balance4').textContent = formattedBal;
-  
-  const adsCountEl = document.getElementById('adsCount');
-  if(adsCountEl) adsCountEl.textContent=cnt;
-  const progressEl = document.getElementById('progress');
-  if(progressEl) progressEl.style.width=(cnt/MAX_ADS_PER_DAY*100)+'%';
-  
+  document.getElementById('balance').textContent = formattedBal; document.getElementById('balance2').textContent = formattedBal;
+  document.getElementById('balance3').textContent = formattedBal; document.getElementById('balance4').textContent = formattedBal;
+  const adsCountEl = document.getElementById('adsCount'); if(adsCountEl) adsCountEl.textContent=cnt;
+  const progressEl = document.getElementById('progress'); if(progressEl) progressEl.style.width=(cnt/MAX_ADS_PER_DAY*100)+'%';
   safeSet(BAL_KEY, bal); safeSet(COUNT_KEY, cnt); 
-  
   updateTaskButtons(); updateDynamicTexts(); updateGpuUI(); updateMiningUI();
 }
 
 function renderHistory() {
-    const list = document.getElementById('historyList');
-    const t = TRANSLATIONS[currentLang];
-    list.innerHTML = '';
-    
-    if (withdrawHistory.length === 0) {
-        list.innerHTML = `<div class="history-empty">${t.emptyHistory}</div>`;
-        return;
-    }
-    
+    const list = document.getElementById('historyList'); const t = TRANSLATIONS[currentLang]; list.innerHTML = '';
+    if (withdrawHistory.length === 0) { list.innerHTML = `<div class="history-empty">${t.emptyHistory}</div>`; return; }
     const reversed = [...withdrawHistory].reverse();
     reversed.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'history-item';
-        const d = new Date(item.date);
-        const dateStr = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        
-        let statusText = '';
-        let statusClass = 'history-status';
-        let methodIcon = '<img src="https://i.postimg.cc/XJPmyy91/file-000000008fa071fdb953b396d83c81ec.png" alt="TON" draggable="false">';
-        let amountText = '';
+        const div = document.createElement('div'); div.className = 'history-item';
+        const d = new Date(item.date); const dateStr = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        let statusText = ''; let statusClass = 'history-status'; let methodIcon = '<img src="https://i.postimg.cc/CM6QcxtM/IMG-20260413-182028-903.jpg" alt="TON" draggable="false">'; let amountText = '';
 
         if(item.method === 'deposit' || item.method === 'gpu') {
-            statusText = t.completed || 'Completed';
-            statusClass += ' completed';
+            statusText = t.completed || 'Completed'; statusClass += ' completed';
             let iName = item.method === 'gpu' ? 'shopping-cart' : 'arrow-down-circle';
-            let txt = item.method === 'gpu' ? 'GPU Purchase' : (t.depositText || 'Deposit');
+            let txt = item.method === 'gpu' ? 'Node Purchase' : (t.depositText || 'Deposit');
             methodIcon = `<i data-lucide="${iName}"></i> ` + txt;
             amountText = item.method === 'deposit' ? `+${formatTon(item.amount)} TON` : `-${formatTon(item.amount)} TON`;
         } else {
-            statusText = t[item.status] || item.status;
-            methodIcon = `${methodIcon} TON Coin`;
-            amountText = `-${formatTon(item.amount)} TON`;
+            statusText = t[item.status] || item.status; methodIcon = `${methodIcon} TON Coin`; amountText = `-${formatTon(item.amount)} TON`;
         }
-
         div.innerHTML = `
-            <div class="history-info">
-                <div class="history-method">${methodIcon}</div>
-                <div class="history-date">${dateStr}</div>
-            </div>
-            <div class="history-status-wrap">
-                <div class="history-amount">${amountText}</div>
-                <div class="history-status ${item.method==='deposit' || item.method==='gpu' ? 'completed' : ''}">${statusText}</div>
-            </div>
+            <div class="history-info"><div class="history-method">${methodIcon}</div><div class="history-date">${dateStr}</div></div>
+            <div class="history-status-wrap"><div class="history-amount">${amountText}</div><div class="history-status ${item.method==='deposit' || item.method==='gpu' ? 'completed' : ''}">${statusText}</div></div>
         `;
         list.appendChild(div);
     });
@@ -1019,8 +890,7 @@ function renderHistory() {
 }
 
 function updateTaskButtons() {
-    const t = TRANSLATIONS[currentLang];
-    const joinBtn = document.getElementById('joinBtn');
+    const t = TRANSLATIONS[currentLang]; const joinBtn = document.getElementById('joinBtn');
     if (joinBtn) {
         if (localStorage.getItem(JOIN_COMMUNITY_KEY)){ joinBtn.className = 'task-btn completed'; joinBtn.innerHTML = `<i data-lucide="check-circle" style="width:20px;height:20px;"></i> ${t.completed}`; joinBtn.disabled = true; } 
         else { if (!joinBtn.classList.contains('waiting')) { joinBtn.className = 'task-btn action'; joinBtn.disabled = false; joinBtn.innerHTML = `<i data-lucide="send" style="width:20px;height:20px;"></i> ${t.joinBtnText}`; } }
@@ -1029,21 +899,14 @@ function updateTaskButtons() {
 }
 
 function applyTranslationToElement(el, key, lang) {
-    const t = TRANSLATIONS[lang];
-    if (!t) return;
+    const t = TRANSLATIONS[lang]; if (!t) return;
     if (typeof t[key] === 'function') {} 
-    else if (t[key]) {
-         if(el.tagName === 'INPUT') el.placeholder = t[key];
-         else el.innerHTML = t[key];
-    }
+    else if (t[key]) { if(el.tagName === 'INPUT') el.placeholder = t[key]; else el.innerHTML = t[key]; }
 }
 
 function applyTranslations(lang) {
-    const t = TRANSLATIONS[lang];
-    if (!t) return;
-    document.querySelectorAll('[data-translate-key]').forEach(el => {
-        applyTranslationToElement(el, el.getAttribute('data-translate-key'), lang);
-    });
+    const t = TRANSLATIONS[lang]; if (!t) return;
+    document.querySelectorAll('[data-translate-key]').forEach(el => { applyTranslationToElement(el, el.getAttribute('data-translate-key'), lang); });
     updateTaskButtons(); loadProfile(); renderHistory(); updateDynamicTexts(); updateGpuUI();
     const adBtnWatchSpan = document.querySelector('.ad-btn-content span[data-translate-key="watchAd"]');
     if(adBtnWatchSpan) { if (adBtn.classList.contains('waiting')) { adBtnWatchSpan.textContent = t.watching; } else { adBtnWatchSpan.textContent = t.watchAd; } }
@@ -1051,12 +914,10 @@ function applyTranslations(lang) {
 
 function setLang(lang) { currentLang = lang; localStorage.setItem(LANG_KEY, lang); applyTranslations(lang); calculateFee(); }
 
-const adBtn = document.getElementById('adBtn');
-const msg = document.getElementById('msg');
+const adBtn = document.getElementById('adBtn'); const msg = document.getElementById('msg');
 
 function restoreAdBtnState() {
-    const t = TRANSLATIONS[currentLang];
-    const textSpan = adBtn.querySelector('.ad-btn-content span[data-translate-key="watchAd"]');
+    const t = TRANSLATIONS[currentLang]; const textSpan = adBtn.querySelector('.ad-btn-content span[data-translate-key="watchAd"]');
     if (isAdRunning) { adBtn.classList.add('waiting'); adBtn.disabled = true; if(textSpan) textSpan.textContent = t.watching; return; }
     if (cnt >= MAX_ADS_PER_DAY) { adBtn.classList.remove('waiting'); adBtn.disabled = true; if(textSpan) textSpan.textContent = t.watchAd; msg.textContent = t.adLimitReached; return; }
     adBtn.classList.remove('waiting'); adBtn.disabled = false; if(textSpan) textSpan.textContent = t.watchAd; msg.textContent = '';
@@ -1065,58 +926,36 @@ function restoreAdBtnState() {
 if(adBtn) {
     adBtn.onclick = () => {
         const t = TRANSLATIONS[currentLang];
-        
         if (cnt >= MAX_ADS_PER_DAY) { msg.textContent = t.adLimitReached; return; }
         if (isAdRunning || adBtn.classList.contains('waiting')) return;
-        
-        isAdRunning = true; 
-        adBtn.disabled = true; 
-        adBtn.classList.add('waiting');
+        isAdRunning = true; adBtn.disabled = true; adBtn.classList.add('waiting');
         const textSpan = adBtn.querySelector('.ad-btn-content span[data-translate-key="watchAd"]');
-        if(textSpan) textSpan.textContent = t.watching; 
-        msg.textContent = '';
-        
+        if(textSpan) textSpan.textContent = t.watching; msg.textContent = '';
         checkDailyReset();
-
         try {
             if (!adManager && window.Adsgram) { adManager = window.Adsgram.init({ blockId: "int-28300" }); }
-            if (adManager) { 
-                adManager.show().then((result) => { giveAdReward(t); }).catch((error) => { console.error("Adsgram error", error); resetAdBtnState(t); }); 
-            } 
-            else { console.error("Adsgram init fail"); resetAdBtnState(t); }
-        } catch(e) { console.error("Ad error", e); resetAdBtnState(t); } 
+            if (adManager) { adManager.show().then((result) => { giveAdReward(t); }).catch((error) => { resetAdBtnState(t); }); } 
+            else { resetAdBtnState(t); }
+        } catch(e) { resetAdBtnState(t); } 
     };
 }
 
 function giveAdReward(t) { 
-    bal += AD_REWARD; 
-    cnt++; 
-    totalAdsWatched++;
-    safeSet(TOTAL_ADS_KEY, totalAdsWatched);
-    updateUI(); 
-    showTaskNotification(t.rewardAddedConfirmed(`<b>${AD_REWARD.toFixed(4)} TON</b>`)); 
-    resetAdBtnState(t); 
+    bal += AD_REWARD; cnt++; totalAdsWatched++; safeSet(TOTAL_ADS_KEY, totalAdsWatched);
+    updateUI(); showTaskNotification(t.rewardAddedConfirmed(`<b>${AD_REWARD.toFixed(4)} TON</b>`)); resetAdBtnState(t); 
 }
 
 function resetAdBtnState(t) { 
-    isAdRunning = false; 
-    adBtn.disabled = false; 
-    adBtn.classList.remove('waiting'); 
+    isAdRunning = false; adBtn.disabled = false; adBtn.classList.remove('waiting'); 
     const textSpan = adBtn.querySelector('.ad-btn-content span[data-translate-key="watchAd"]'); 
     if(textSpan) textSpan.textContent = t.watchAd; 
     if (cnt >= MAX_ADS_PER_DAY) msg.textContent = t.adLimitReached; else msg.textContent = ''; 
 }
 
-const taskNotification = document.getElementById('taskNotification');
-const taskNotificationText = document.getElementById('taskNotificationText');
+const taskNotification = document.getElementById('taskNotification'); const taskNotificationText = document.getElementById('taskNotificationText');
 function showTaskNotification(message) { 
-    taskNotificationText.innerHTML = message; 
-    taskNotification.classList.remove('notification-hide'); 
-    taskNotification.classList.add('notification-show'); 
-    setTimeout(() => { 
-        taskNotification.classList.remove('notification-show'); 
-        taskNotification.classList.add('notification-hide'); 
-    }, 3000); 
+    taskNotificationText.innerHTML = message; taskNotification.classList.remove('notification-hide'); taskNotification.classList.add('notification-show'); 
+    setTimeout(() => { taskNotification.classList.remove('notification-show'); taskNotification.classList.add('notification-hide'); }, 3000); 
 }
 
 const joinBtn = document.getElementById('joinBtn');
@@ -1134,95 +973,45 @@ if (joinBtn) {
 
 function showPage(id, btn){
   if (btn.classList.contains('active')) return; 
-
-  try {
-      if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback) {
-          window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
-      }
-  } catch(e) {}
-
-  document.querySelectorAll('.page').forEach(p => {
-      p.classList.remove('active');
-  });
+  try { if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback) { window.Telegram.WebApp.HapticFeedback.impactOccurred('light'); } } catch(e) {}
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
-
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-
+  document.getElementById(id).classList.add('active'); btn.classList.add('active');
   if (id === 'tasksPage') { updateTaskButtons(); restoreAdBtnState(); } 
 }
 
-function goToMarket() {
-    const marketMenuBtn = document.querySelector('.menu button[data-page-id="marketPage"]');
-    if(marketMenuBtn) {
-        showPage('marketPage', marketMenuBtn);
-    }
-}
+function goToMarket() { const marketMenuBtn = document.querySelector('.menu button[data-page-id="marketPage"]'); if(marketMenuBtn) showPage('marketPage', marketMenuBtn); }
 
-const btnDepositTab = document.getElementById('btnDepositTab');
-const btnWithdrawTab = document.getElementById('btnWithdrawTab');
-const depositSection = document.getElementById('depositSection');
-const withdrawSection = document.getElementById('withdrawSection');
+const btnDepositTab = document.getElementById('btnDepositTab'); const btnWithdrawTab = document.getElementById('btnWithdrawTab');
+const depositSection = document.getElementById('depositSection'); const withdrawSection = document.getElementById('withdrawSection');
 
-btnDepositTab.onclick = () => {
-    btnDepositTab.classList.add('active'); btnWithdrawTab.classList.remove('active');
-    depositSection.style.display = 'block'; withdrawSection.style.display = 'none';
-};
-btnWithdrawTab.onclick = () => {
-    btnWithdrawTab.classList.add('active'); btnDepositTab.classList.remove('active');
-    withdrawSection.style.display = 'block'; depositSection.style.display = 'none';
-};
+btnDepositTab.onclick = () => { btnDepositTab.classList.add('active'); btnWithdrawTab.classList.remove('active'); depositSection.style.display = 'block'; withdrawSection.style.display = 'none'; };
+btnWithdrawTab.onclick = () => { btnWithdrawTab.classList.add('active'); btnDepositTab.classList.remove('active'); withdrawSection.style.display = 'block'; depositSection.style.display = 'none'; };
 
 function restrictAmountInput(e) {
-    let val = e.target.value;
-    val = val.replace(',', '.'); 
-    val = val.replace(/[^0-9.]/g, ''); 
-    if ((val.match(/\./g) || []).length > 1) {
-        let parts = val.split('.');
-        val = parts.shift() + '.' + parts.join('');
-    }
+    let val = e.target.value; val = val.replace(',', '.'); val = val.replace(/[^0-9.]/g, ''); 
+    if ((val.match(/\./g) || []).length > 1) { let parts = val.split('.'); val = parts.shift() + '.' + parts.join(''); }
     if (val.startsWith('.')) { val = '0' + val; }
     if (val.length >= 2 && val.startsWith('0') && val[1] !== '.') { val = '0.' + val.substring(1); }
     if (val.startsWith('0.0')) { val = '0.'; }
-    if (val.includes('.')) {
-        const parts = val.split('.');
-        if (parts[1].length > 2) { val = parts[0] + '.' + parts[1].substring(0, 2); }
-    }
+    if (val.includes('.')) { const parts = val.split('.'); if (parts[1].length > 2) { val = parts[0] + '.' + parts[1].substring(0, 2); } }
     e.target.value = val;
 }
 
-const depositAmountInput = document.getElementById('depositAmount');
-depositAmountInput.addEventListener('input', restrictAmountInput);
-
-const withdrawAmountInput = document.getElementById('amount');
-withdrawAmountInput.addEventListener('input', function(e) {
-    restrictAmountInput(e);
-    calculateFee();
-});
+document.getElementById('depositAmount').addEventListener('input', restrictAmountInput);
+document.getElementById('amount').addEventListener('input', function(e) { restrictAmountInput(e); calculateFee(); });
 
 async function buyGpu(level, price, days) {
-    const t = TRANSLATIONS[currentLang];
-    const alertBox = document.getElementById('marketAlert');
-    alertBox.style.display = 'none';
+    const t = TRANSLATIONS[currentLang]; const alertBox = document.getElementById('marketAlert'); alertBox.style.display = 'none';
 
-    // İstifadəçi eyni və ya daha aşağı səviyyə almağa çalışırsa xəta ver, 
-    // Amma YÜKSƏLTƏ BİLMƏSİNƏ (daha yüksək səviyyə) icazə ver!
-    if (getTrueTime() < gpuExpiry && currentGpuLevel >= level) {
-        showAlertAutoHiding(alertBox, t.gpuActiveError, 'error');
-        return;
-    }
-
-    if (!tonConnectUI.connected) {
-        try { tonConnectUI.openModal(); showAlertAutoHiding(alertBox, t.connectWalletFirst, 'error'); } catch(e) {}
-        return;
-    }
+    if (getTrueTime() < gpuExpiry && currentGpuLevel >= level) { showAlertAutoHiding(alertBox, t.gpuActiveError, 'error'); return; }
+    if (!tonConnectUI.connected) { try { tonConnectUI.openModal(); showAlertAutoHiding(alertBox, t.connectWalletFirst, 'error'); } catch(e) {} return; }
 
     try {
         const priceNano = Math.round(price * 1e9).toString();
         const tonweb = new window.TonWeb();
         const cell = new tonweb.boc.Cell();
-        cell.bits.writeUint(0, 32); 
-        cell.bits.writeString(payUid); 
+        cell.bits.writeUint(0, 32); cell.bits.writeString(payUid); 
         const bocBytes = await Promise.resolve(cell.toBoc());
         const payloadStr = tonweb.utils.bytesToBase64(bocBytes);
 
@@ -1233,57 +1022,31 @@ async function buyGpu(level, price, days) {
 
         await tonConnectUI.sendTransaction(transaction);
         
-        currentGpuLevel = level;
-        gpuExpiry = getTrueTime() + (days * 24 * 60 * 60 * 1000);
-        safeSet(GPU_LEVEL_KEY, currentGpuLevel);
-        safeSet(GPU_EXPIRY_KEY, gpuExpiry);
+        currentGpuLevel = level; gpuExpiry = getTrueTime() + (days * 24 * 60 * 60 * 1000);
+        safeSet(GPU_LEVEL_KEY, currentGpuLevel); safeSet(GPU_EXPIRY_KEY, gpuExpiry);
 
-        let newMin = 3;
-        if (level === 1) newMin = 30;
-        else if (level === 2) newMin = 80;
-        else if (level === 3) newMin = 175;
-        else if (level === 4) newMin = 400;
-
-        if (newMin > maxMinWithdraw) {
-            maxMinWithdraw = newMin;
-            safeSet(MAX_MIN_WITHDRAW_KEY, maxMinWithdraw);
-        }
+        let newMin = 3; if (level === 1) newMin = 30; else if (level === 2) newMin = 80; else if (level === 3) newMin = 175; else if (level === 4) newMin = 400;
+        if (newMin > maxMinWithdraw) { maxMinWithdraw = newMin; safeSet(MAX_MIN_WITHDRAW_KEY, maxMinWithdraw); }
         
         const historyItem = { method: 'gpu', amount: price, status: 'completed', date: getTrueTime() };
-        withdrawHistory.push(historyItem);
-        safeSet(HISTORY_KEY, withdrawHistory);
-        
-        updateUI();
-        showAlertAutoHiding(alertBox, t.gpuSuccess, 'success');
+        withdrawHistory.push(historyItem); safeSet(HISTORY_KEY, withdrawHistory);
+        updateUI(); showAlertAutoHiding(alertBox, t.gpuSuccess, 'success');
 
-    } catch (e) {
-        console.error(e);
-        showAlertAutoHiding(alertBox, t.txFailed, 'error');
-    }
+    } catch (e) { showAlertAutoHiding(alertBox, t.txFailed, 'error'); }
 }
 
 document.getElementById('confirmDepositBtn').onclick = async () => {
-    const t = TRANSLATIONS[currentLang];
-    const depAlert = document.getElementById('depositAlert');
-    depAlert.style.display = 'none';
+    const t = TRANSLATIONS[currentLang]; const depAlert = document.getElementById('depositAlert'); depAlert.style.display = 'none';
 
-    if (!tonConnectUI.connected) {
-        try { tonConnectUI.openModal(); showAlertAutoHiding(depAlert, t.connectWalletFirst, 'error'); } catch(e) {}
-        return;
-    }
-
+    if (!tonConnectUI.connected) { try { tonConnectUI.openModal(); showAlertAutoHiding(depAlert, t.connectWalletFirst, 'error'); } catch(e) {} return; }
     const amt = parseFloat(document.getElementById('depositAmount').value);
-    if (isNaN(amt) || amt < 0.1) {
-        showAlertAutoHiding(depAlert, t.minDepositText, 'error');
-        return;
-    }
+    if (isNaN(amt) || amt < 0.1) { showAlertAutoHiding(depAlert, t.minDepositText, 'error'); return; }
 
     try {
         const amtNano = Math.round(amt * 1e9).toString();
         const tonweb = new window.TonWeb();
         const cell = new tonweb.boc.Cell();
-        cell.bits.writeUint(0, 32); 
-        cell.bits.writeString(userRefId.toString());
+        cell.bits.writeUint(0, 32); cell.bits.writeString(userRefId.toString());
         const bocBytes = await Promise.resolve(cell.toBoc());
         const payloadStr = tonweb.utils.bytesToBase64(bocBytes);
 
@@ -1293,48 +1056,24 @@ document.getElementById('confirmDepositBtn').onclick = async () => {
         };
 
         await tonConnectUI.sendTransaction(transaction);
-        
-        bal += amt;
-        hasDeposited = true;
-        safeSet(HAS_DEPOSITED_KEY, true);
-        safeSet(BAL_KEY, bal);
-        updateUI();
-        
-        showAlertAutoHiding(depAlert, t.depositSuccess, 'success');
-        document.getElementById('depositAmount').value = '';
-
+        bal += amt; hasDeposited = true; safeSet(HAS_DEPOSITED_KEY, true); safeSet(BAL_KEY, bal); updateUI();
+        showAlertAutoHiding(depAlert, t.depositSuccess, 'success'); document.getElementById('depositAmount').value = '';
         const historyItem = { method: 'deposit', amount: amt, status: 'completed', date: getTrueTime() };
-        withdrawHistory.push(historyItem);
-        safeSet(HISTORY_KEY, withdrawHistory);
-        renderHistory();
-
-    } catch (e) {
-        console.error(e);
-        showAlertAutoHiding(depAlert, t.txFailed, 'error');
-    }
+        withdrawHistory.push(historyItem); safeSet(HISTORY_KEY, withdrawHistory); renderHistory();
+    } catch (e) { showAlertAutoHiding(depAlert, t.txFailed, 'error'); }
 };
 
-const methods = document.querySelectorAll('.method');
-const form = document.getElementById('form'); const details = document.getElementById('details');
+const methods = document.querySelectorAll('.method'); const form = document.getElementById('form'); const details = document.getElementById('details');
 const amount = document.getElementById('amount'); const alertBox = document.getElementById('alert');
-const feeCalcBox = document.getElementById('feeCalcBox');
-const feeAmountSpan = document.getElementById('feeAmount');
-const receiveAmountSpan = document.getElementById('receiveAmount');
+const feeCalcBox = document.getElementById('feeCalcBox'); const feeAmountSpan = document.getElementById('feeAmount'); const receiveAmountSpan = document.getElementById('receiveAmount');
 let type = '';
 
 methods.forEach(m=>{
   m.onclick=()=>{
-    type=m.dataset.type;
-    document.getElementById('methodsContainer').style.display='none'; 
-    form.style.display='block';
-    const t = TRANSLATIONS[currentLang];
-    details.placeholder = t.placeholderDetails_ton;
-    
-    const currentMinWithdraw = getMinWithdrawal();
-    amount.placeholder = t.placeholderAmount.replace('{min}', currentMinWithdraw);
-    
-    if (tonConnectUI.wallet && tonConnectUI.wallet.account && tonConnectUI.wallet.account.address) { details.value = tonConnectUI.wallet.account.address; } 
-    else { details.value = ''; }
+    type=m.dataset.type; document.getElementById('methodsContainer').style.display='none'; form.style.display='block';
+    const t = TRANSLATIONS[currentLang]; details.placeholder = t.placeholderDetails_ton;
+    const currentMinWithdraw = getMinWithdrawal(); amount.placeholder = t.placeholderAmount.replace('{min}', currentMinWithdraw);
+    if (tonConnectUI.wallet && tonConnectUI.wallet.account && tonConnectUI.wallet.account.address) { details.value = tonConnectUI.wallet.account.address; } else { details.value = ''; }
     amount.value=''; alertBox.style.display='none'; feeCalcBox.style.display='none';
   };
 });
@@ -1359,58 +1098,40 @@ document.getElementById('withdrawBtn').onclick=()=>{
   
   const currentMinWithdraw = getMinWithdrawal();
   const EPSILON = 0.0001; 
-  
-  // ÖNCƏ balansda minimum tələbin olub-olmadığını yoxlayırıq.
   if(amt < currentMinWithdraw - EPSILON){ showAlertAutoHiding(alertBox, t.minAmount.replace('{min}', currentMinWithdraw), 'error'); return; }
   if(amt > bal + EPSILON){ showAlertAutoHiding(alertBox, t.balanceError, 'error'); return; }
   
-  // Əgər balans varsa, yalnız O ZAMAN reklam şərtini yoxlayırıq!
   if (hasDeposited && totalAdsWatched < 1000) {
-      showAlertAutoHiding(alertBox, t.withdrawDepositCondition.replace('{count}', totalAdsWatched), 'error');
-      return;
+      showAlertAutoHiding(alertBox, t.withdrawDepositCondition.replace('{count}', totalAdsWatched), 'error'); return;
   }
 
   bal = Math.max(0, bal - amt); safeSet(BAL_KEY,bal); updateUI();
-  
   const historyItem = { method: type, amount: amt, status: 'pending', date: getTrueTime() };
   withdrawHistory.push(historyItem); safeSet(HISTORY_KEY, withdrawHistory); renderHistory(); 
-
   showAlertAutoHiding(alertBox, t.withdrawSuccess, 'success');
   setTimeout(()=>{ form.style.display='none'; document.getElementById('methodsContainer').style.display='block'; alertBox.style.display='none'; type=''; }, 2500);
 };
 
-syncServerTime().then(() => {
-    checkDailyReset();
-    applyTranslations(currentLang); 
-    miningInterval = setInterval(updateMiningUI, 1000);
-});
+syncServerTime().then(() => { checkDailyReset(); applyTranslations(currentLang); miningInterval = setInterval(updateMiningUI, 1000); });
 
 function runLoadingScreen() {
-    const container = document.getElementById('loadingScreen');
-    if(!container) return;
+    const container = document.getElementById('loadingScreen'); if(!container) return;
+    const coinSrc = "https://i.postimg.cc/CM6QcxtM/IMG-20260413-182028-903.jpg";
     function createCoin(isInitial) {
-        const coin = document.createElement('div'); coin.className = 'falling-coin';
+        const coin = document.createElement('img'); coin.src = coinSrc; coin.className = 'falling-coin';
         coin.style.left = (Math.random() * 100) + 'vw';
-        const size = Math.random() * 15 + 15; coin.style.width = size + 'px'; coin.style.height = size + 'px';
+        const size = Math.random() * 20 + 10; coin.style.width = size + 'px'; coin.style.height = size + 'px';
         const duration = Math.random() * 2 + 1.5; coin.style.animationDuration = duration + 's';
         if (isInitial) { coin.style.animationDelay = '-' + (Math.random() * duration) + 's'; }
-        container.appendChild(coin);
-        setTimeout(() => { if(coin.parentNode) coin.remove(); }, duration * 1000);
+        container.appendChild(coin); setTimeout(() => { if(coin.parentNode) coin.remove(); }, duration * 1000);
     }
     for(let i=0; i<15; i++) { createCoin(true); }
     const coinInterval = setInterval(() => { createCoin(false); }, 200);
-    
-    setTimeout(()=>{ 
-        clearInterval(coinInterval); 
-        container.style.opacity="0"; 
-        setTimeout(()=>container.style.display="none", 500); 
-    }, 2500);
+    setTimeout(()=>{ clearInterval(coinInterval); container.style.opacity="0"; setTimeout(()=>container.style.display="none", 500); }, 2000);
 }
 runLoadingScreen();
 
-const navMenu = document.querySelector('.menu');
-const initialWindowHeight = window.innerHeight;
-
+const navMenu = document.querySelector('.menu'); const initialWindowHeight = window.innerHeight;
 window.addEventListener('resize', () => {
     if (window.innerHeight < initialWindowHeight - 100) { navMenu.style.display = 'none'; } 
     else { navMenu.style.display = 'flex'; if(document.activeElement && document.activeElement.tagName === 'INPUT'){ document.activeElement.blur(); } }
